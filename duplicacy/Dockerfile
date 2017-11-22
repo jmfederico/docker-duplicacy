@@ -9,3 +9,5 @@ RUN apk --no-cache add ca-certificates openssl && \
 RUN chmod u+x /usr/local/bin/duplicacy
 
 ENTRYPOINT ["duplicacy"]
+
+CMD ["backup"]
