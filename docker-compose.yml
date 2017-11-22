@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  duplicacy:
+    build: ./duplicacy
+    volumes:
+      - ${BACKUP_DIR:-~}:/srv/backup
+    labels:
+      cron.schedule: ${BACKUP_SCHEDULE:-@every 1h}
+
+  container-crontab:
+   image: rancher/container-crontab:v0.3.0
+   container_name: crontab
+   volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
