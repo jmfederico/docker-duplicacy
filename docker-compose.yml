@@ -6,10 +6,3 @@ services:
       - ${BACKUP_DIR:-~}:/srv/backup
     labels:
       cron.schedule: ${BACKUP_SCHEDULE:-@every 1h}
-
-  container-crontab:
-    image: rancher/container-crontab:v0.2.0
-    restart: always
-    container_name: crontab
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
